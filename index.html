@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heroku Deploy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url('https://graph.org/file/ddd4a90f145e4810d19f2.jpg') center/cover;
+      perspective: 1000px;
+    }
+    .container {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .heroku-button {
+      display: inline-block;
+      background-color: #430098;
+      color: #fff;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #FF0000;
+      margin-bottom: 10px;
+    }
+    .icon-buttons {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon-button {
+      margin: 0 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .icon-button img {
+      width: 24px;
+      height: 24px;
+    }
+    .icon-button:hover {
+      background-color: rgba(255, 255, 255, 1);
+    }
+    .timer {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 18px;
+      color: #FF0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Deploy to Heroku</h1>
+    <p>𝗘𝗡𝗧𝗘𝗥 𝗬𝗢𝗨𝗥 𝗚𝗜𝗧𝗛𝗨𝗕 𝗨𝗥𝗟</p>
+    <input type="text" id="github-url" placeholder="ᴇɴᴛᴇʀ ɢɪᴛʜᴜʙ ʀᴇᴘᴏ ᴜʀʟ">
+    <br>
+    <button class="heroku-button" onclick="redirectToHeroku()">𝗗𝗘𝗣𝗟𝗢𝗬 𝗪𝗜𝗧𝗛 𝗛𝗘𝗥𝗢𝗞𝗨</button>
+  </div>
+
+  <div class="icon-buttons">
+    <div class="icon-button" onclick="redirectToInstagram()">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/instagram.svg" alt="Instagram">
+    </div>
+    <div class="icon-button" onclick="redirectToTelegram()">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/telegram.svg" alt="Telegram">
+    </div>
+    <div class="icon-button" onclick="redirectToGitHub()">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/github.svg" alt="GitHub">
+    </div>
+  </div>
+
+  <div class="timer" id="indian-time"></div>
+
+  <script>
+    function redirectToHeroku() {
+      var githubUrl = document.getElementById('github-url').value;
+      var encodedUrl = encodeURIComponent(githubUrl);
+      var herokuUrl = 'https://dashboard.heroku.com/new?template=' + encodedUrl;
+      window.open(herokuUrl, '_blank');
+    }
+
+    function redirectToInstagram() {
+      window.open('https://www.instagram.com/iam.daxx/', '_blank');
+    }
+
+    function redirectToTelegram() {
+      window.open('https://t.me/DAXXSUPPORT', '_blank');
+    }
+
+    function redirectToGitHub() {
+      window.open('https://github.com/DAXXTEAM', '_blank');
+    }
+
+    function updateTime() {
+      var now = new Date();
+      var options = { timeZone: 'Asia/Kolkata', hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+      var indianTime = now.toLocaleString('en-US', options);
+      document.getElementById('indian-time').textContent = '⏰ ' + indianTime;
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000); // Update every second
+  </script>
+</body>
+  </html>
+        
